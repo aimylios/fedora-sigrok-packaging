@@ -1,0 +1,47 @@
+Name:           sigrok-firmware-fx2lafw
+Version:        REVISION_NUMBER
+Epoch:          100
+Release:        nightly%{?dist}
+Summary:        Firmware for logic analyzers based on the Cypress EZ-USB FX2(LP) chip
+# Combined and LGPLv2+ and GPLv2+
+License:        GPLv2+
+URL:            http://www.sigrok.org
+
+Source0:        %{name}-%{version}.tar.gz
+BuildArch:      noarch
+
+BuildRequires:  automake
+BuildRequires:  sdcc
+
+Requires:       sigrok-firmware-filesystem
+
+%description
+fx2lafw is a free/libre/open-source firmware for logic analyzers based on
+the Cypress EZ-USB FX2(LP) chip.
+
+This firmware package is needed to use libsigrok with Cypress EZ-USB FX2(LP)
+based logic analyzers (the fx2lafw driver in libsigrok).
+
+
+%prep
+%setup -q
+
+
+%build
+./autogen.sh
+%configure
+%make_build
+
+
+%install
+%make_install
+
+
+%files
+%doc README NEWS COPYING COPYING.LESSER
+%{_datadir}/sigrok-firmware/fx2lafw-*.fw
+
+
+%changelog
+* Sun Aug 5 2018 Aimylios <aimylios@xxx.xx>
+- Initial release based on 0.1.5-4.fc29

@@ -1,0 +1,47 @@
+Name:           sigrok-cli
+Version:        REVISION_NUMBER
+Epoch:          100
+Release:        nightly%{?dist}
+Summary:        Basic hardware access drivers for logic analyzers
+License:        GPLv3+
+URL:            http://www.sigrok.org
+
+Source0:        %{name}-%{version}.tar.gz
+
+BuildRequires:  automake
+BuildRequires:  gcc
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libsigrok)
+BuildRequires:  pkgconfig(libsigrokdecode)
+
+%description
+%{name} is a command-line tool written in C, which uses both libsigrok and
+libsigrokdecode to provide the basic sigrok functionality from the
+command-line. Among other things, it's useful for scripting purposes.
+
+
+%prep
+%setup -q
+
+
+%build
+./autogen.sh
+%configure --disable-static
+%make_build
+
+
+%install
+%make_install
+find %{buildroot} -name '*.la' -exec rm -f {} ';'
+
+
+%files
+%doc NEWS README COPYING
+%{_mandir}/man1/%{name}.1*
+%{_bindir}/%{name}
+%exclude %{_datadir}/applications/org.sigrok.sigrok-cli.desktop
+%exclude %{_datadir}/icons/hicolor/scalable/apps/sigrok-cli.svg
+
+%changelog
+* Sun Aug 5 2018 Aimylios <aimylios@xxx.xx>
+- Initial release based on 0.7.0-5.fc29

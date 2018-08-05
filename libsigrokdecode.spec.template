@@ -1,0 +1,85 @@
+Name:           libsigrokdecode
+Version:        REVISION_NUMBER
+Epoch:          100
+Release:        nightly%{?dist}
+Summary:        Basic API for running protocol decoders
+# Combined GPLv3+ and GPLv2+
+License:        GPLv3+
+URL:            http://www.sigrok.org
+
+Source0:        %{name}-%{version}.tar.gz
+
+BuildRequires:  automake
+BuildRequires:  doxygen
+BuildRequires:  gcc
+BuildRequires:  graphviz
+BuildRequires:  glib2-devel
+BuildRequires:  libtool
+BuildRequires:  python3-devel
+
+%description
+%{name} is a shared library written in C which provides the basic API
+for running sigrok protocol decoders. The protocol decoders themselves
+are written in Python.
+
+
+%package        devel
+Summary:        Development files for %{name}
+Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+
+%description    devel
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
+
+
+%package        doc
+Group:          Documentation
+Summary:        API documentation for %{name}
+BuildArch:      noarch
+
+%description    doc
+The %{name}-doc package contains documentation for developing software
+using %{name}.
+
+
+%prep
+%setup -q
+
+
+%build
+./autogen.sh
+%configure --disable-static
+%make_build
+
+# This builds documentation for the -doc package
+doxygen Doxyfile
+
+
+%install
+%make_install
+find %{buildroot} -name '*.la' -exec rm -f {} ';'
+
+
+%post -p /sbin/ldconfig
+
+
+%postun -p /sbin/ldconfig
+
+
+%files
+%doc README NEWS COPYING
+%{_libdir}/libsigrokdecode.so.4*
+%{_datadir}/libsigrokdecode/
+
+%files devel
+%{_includedir}/libsigrokdecode/
+%{_libdir}/libsigrokdecode.so
+%{_libdir}/pkgconfig/libsigrokdecode.pc
+
+%files doc
+%doc doxy/html-api/
+
+
+%changelog
+* Sun Aug 5 2018 Aimylios <aimylios@xxx.xx>
+- Initial release based on 0.5.0-6.fc29

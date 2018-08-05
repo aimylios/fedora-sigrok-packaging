@@ -1,0 +1,64 @@
+Name:           pulseview
+Version:        REVISION_NUMBER
+Epoch:          100
+Release:        nightly%{?dist}
+Summary:        Signal acquisition and analysis GUI for sigrok
+# Combined GPLv3+ (libsigrok and libsigrokdecode) and GPLv2+ (pulseview)
+License:        GPLv3+
+URL:            http://www.sigrok.org
+
+Source0:        %{name}-%{version}.tar.gz
+
+BuildRequires:  cmake
+BuildRequires:  desktop-file-utils
+BuildRequires:  gcc-c++
+BuildRequires:  libappstream-glib
+BuildRequires:  boost-devel
+BuildRequires:  qt5-devel
+BuildRequires:  pkgconfig(libsigrokcxx)
+BuildRequires:  pkgconfig(libsigrokdecode)
+
+Requires:       hicolor-icon-theme
+
+%description
+PulseView is an application for enabling data acquisition and analysis with
+test and measurement devices such as logic analyzers, oscilloscopes,
+mixed-signal devices, digital multimeters and sensors, etc. It uses sigrok
+libraries under the hood.
+
+
+%prep
+%autosetup
+
+
+%build
+%cmake -DCMAKE_BUILD_TYPE=Release -DDISABLE_WERROR=True
+%make_build
+
+
+%install
+%make_install
+
+# Why you install appdata in bad location, you sigrok upstream?
+mv %{buildroot}/%{_datadir}/metainfo %{buildroot}/%{_datadir}/appdata
+
+desktop-file-validate \
+    %{buildroot}/%{_datadir}/applications/org.sigrok.PulseView.desktop
+
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata.xml
+
+
+%files
+%doc README
+%license COPYING
+%{_mandir}/man1/%{name}.1*
+%{_bindir}/%{name}
+%{_datadir}/applications/org.sigrok.PulseView.desktop
+%{_datadir}/icons/hicolor/48x48/apps/pulseview.png
+%{_datadir}/icons/hicolor/scalable/apps/pulseview.svg
+%{_datadir}/appdata/org.sigrok.PulseView.appdata.xml
+
+
+%changelog
+* Sun Aug 5 2018 Aimylios <aimylios@xxx.xx>
+- Initial release based on 0.4.0-10.fc29
