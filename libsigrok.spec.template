@@ -10,15 +10,18 @@ URL:            http://www.sigrok.org/
 Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  automake
-BuildRequires:  doxygen
+BuildRequires:  bluez-libs-devel
+BuildRequires:  check-devel
 BuildRequires:  gcc-c++
-BuildRequires:  graphviz
-BuildRequires:  libtool
+BuildRequires:  doxygen
 BuildRequires:  glib2-devel
 BuildRequires:  glibmm24-devel
+BuildRequires:  graphviz
+BuildRequires:  hidapi-devel
 BuildRequires:  libftdi-devel
 BuildRequires:  libieee1284-devel
 BuildRequires:  libserialport-devel
+BuildRequires:  libtool
 BuildRequires:  libusb1-devel
 BuildRequires:  libzip-devel
 BuildRequires:  zlib-devel
@@ -123,5 +126,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Sat Jun 8 2019 Aimylios <aimylios@xxx.xx>
+- Add new dependencies
+
 * Sun Aug 5 2018 Aimylios <aimylios@xxx.xx>
 - Initial release based on 0.5.0-5.fc29
