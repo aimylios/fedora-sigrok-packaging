@@ -19,6 +19,7 @@ BuildRequires:  pkgconfig(libsigrokcxx)
 BuildRequires:  pkgconfig(libsigrokdecode)
 
 Requires:       hicolor-icon-theme
+Requires:       qt5-qttranslations
 
 %description
 PulseView is an application for enabling data acquisition and analysis with
@@ -60,5 +61,8 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Fri May 1 2020 Aimylios <aimylios@xxx.xx>
+- Add qt5-qttranslations as runtime dependency
+
 * Sun Aug 5 2018 Aimylios <aimylios@xxx.xx>
 - Initial release based on 0.4.0-10.fc29
