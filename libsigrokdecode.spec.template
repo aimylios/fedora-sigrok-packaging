@@ -68,6 +68,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 %files
 %doc README NEWS COPYING
+%{_libdir}/libirmp.so*
 %{_libdir}/libsigrokdecode.so.4*
 %{_datadir}/libsigrokdecode/
 
@@ -81,5 +82,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Sat Aug 1 2020 Aimylios <aimylios@xxx.xx>
+- Include IRMP library
+
 * Sun Aug 5 2018 Aimylios <aimylios@xxx.xx>
 - Initial release based on 0.5.0-6.fc29
