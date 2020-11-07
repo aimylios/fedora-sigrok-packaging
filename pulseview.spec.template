@@ -34,11 +34,11 @@ libraries under the hood.
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release -DDISABLE_WERROR=True
-%make_build
+%cmake_build
 
 
 %install
-%make_install
+%cmake_install
 
 # Why you install appdata in bad location, you sigrok upstream?
 mv %{buildroot}/%{_datadir}/metainfo %{buildroot}/%{_datadir}/appdata
@@ -61,6 +61,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Sat Nov 7 2020 Aimylios <aimylios@xxx.xx>
+- Update usage of cmake macros
+
 * Fri May 1 2020 Aimylios <aimylios@xxx.xx>
 - Add qt5-qttranslations as runtime dependency
 
