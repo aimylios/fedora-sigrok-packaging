@@ -38,10 +38,14 @@ based logic analyzers (the fx2lafw driver in libsigrok).
 
 
 %files
-%doc README NEWS COPYING COPYING.LESSER
+%license COPYING COPYING.LESSER
+%doc NEWS README
 %{_datadir}/sigrok-firmware/fx2lafw-*.fw
 
 
 %changelog
+* Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
+- Correctly package license and documentation
+
 * Sun Aug 5 2018 Aimylios <aimylios@xxx.xx>
 - Initial release based on 0.1.5-4.fc29

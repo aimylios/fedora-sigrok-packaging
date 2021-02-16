@@ -66,7 +66,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %files
-%doc README NEWS COPYING
+%license COPYING
+%doc NEWS README
 %{_libdir}/libirmp.so*
 %{_libdir}/libsigrokdecode.so.4*
 %{_datadir}/libsigrokdecode/
@@ -83,6 +84,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %changelog
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Remove obsolete Group tag
+- Correctly package license and documentation
 
 * Sat Aug 1 2020 Aimylios <aimylios@xxx.xx>
 - Include IRMP library

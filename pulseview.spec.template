@@ -55,8 +55,8 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %files
-%doc README
 %license COPYING
+%doc NEWS README
 %{_mandir}/man1/%{name}.1*
 %{_bindir}/%{name}
 %{_datadir}/applications/org.sigrok.PulseView.desktop
@@ -66,6 +66,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
+- Correctly package license and documentation
+
 * Sat Nov 7 2020 Aimylios <aimylios@xxx.xx>
 - Update usage of cmake macros
 - Update dependencies on qt5

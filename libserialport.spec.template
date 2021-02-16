@@ -66,7 +66,8 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %files
-%doc COPYING README
+%license COPYING
+%doc NEWS README
 %{_libdir}/%{name}.so.0*
 
 %files devel
@@ -81,6 +82,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %changelog
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Remove obsolete Group tag
+- Correctly package license and documentation
 
 * Sun Mar 18 2018 Aimylios <aimylios@xxx.xx>
 - Initial release based on 0.1.1-5.fc29

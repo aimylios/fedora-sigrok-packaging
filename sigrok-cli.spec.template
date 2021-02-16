@@ -36,12 +36,17 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %files
-%doc NEWS README COPYING
+%license COPYING
+%doc NEWS README
 %{_mandir}/man1/%{name}.1*
 %{_bindir}/%{name}
 %exclude %{_datadir}/applications/org.sigrok.sigrok-cli.desktop
 %exclude %{_datadir}/icons/hicolor/scalable/apps/sigrok-cli.svg
 
+
 %changelog
+* Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
+- Correctly package license and documentation
+
 * Sun Aug 5 2018 Aimylios <aimylios@xxx.xx>
 - Initial release based on 0.7.0-5.fc29

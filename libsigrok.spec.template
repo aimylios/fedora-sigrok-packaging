@@ -98,7 +98,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %files
-%doc README README.devices NEWS COPYING
+%license COPYING
+%doc NEWS README README.devices
 %{_libdir}/libsigrok.so.*
 %{_datadir}/icons/hicolor/48x48/mimetypes/libsigrok.png
 %{_datadir}/icons/hicolor/scalable/mimetypes/libsigrok.svg
@@ -127,6 +128,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %changelog
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Remove obsolete Group tag
+- Correctly package license and documentation
 
 * Sat Jun 8 2019 Aimylios <aimylios@xxx.xx>
 - Add new dependencies
