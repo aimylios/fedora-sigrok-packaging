@@ -41,8 +41,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %doc NEWS README
 %{_mandir}/man1/%{name}.1*
 %{_bindir}/%{name}
-%exclude %{_datadir}/applications/org.sigrok.sigrok-cli.desktop
-%exclude %{_datadir}/icons/hicolor/scalable/apps/sigrok-cli.svg
+%exclude %{_datadir}/applications/org.sigrok.%{name}.desktop
+%exclude %{_datadir}/icons/*/*/*/%{name}.svg
 
 
 %changelog

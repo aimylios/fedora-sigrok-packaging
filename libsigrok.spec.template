@@ -42,12 +42,14 @@ Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+
 %package        cxx
 Summary:        C++ bindings for %{name}
 Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description    cxx
 The %{name}-cxx package contains C++ libraries for %{name}.
+
 
 %package        cxx-devel
 Summary:        Development files for  %{name} C++ bindings
@@ -56,6 +58,7 @@ Requires:       %{name}-cxx%{?_isa} = %{epoch}:%{version}-%{release}
 %description    cxx-devel
 The %{name}-cxx-devel package contains libraries and header files for
 developing applications that use %{name} C++ bindings.
+
 
 %package        doc
 Summary:        API documentation for %{name}
@@ -67,7 +70,7 @@ with %{name}.
 
 
 %prep
-%setup -q
+%autosetup
 
 
 %build
@@ -100,20 +103,17 @@ install -D -p -m 0644 contrib/61-libsigrok-uaccess.rules %{buildroot}%{_udevrule
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
-%ldconfig_scriptlets
-%ldconfig_scriptlets cxx
-
-
 %files
 %license COPYING
 %doc NEWS README README.devices
 %{_libdir}/libsigrok.so.*
-%{_datadir}/icons/hicolor/48x48/mimetypes/libsigrok.png
-%{_datadir}/icons/hicolor/scalable/mimetypes/libsigrok.svg
-%{_datadir}/mime/packages/vnd.sigrok.session.xml
 %{_udevrulesdir}/60-libsigrok.rules
 %{_udevrulesdir}/61-libsigrok-uaccess.rules
 
+# TODO: What are we supposed to do with these icons and MIME types?
+%exclude %{_datadir}/icons/hicolor/48x48/mimetypes/libsigrok.png
+%exclude %{_datadir}/icons/hicolor/scalable/mimetypes/libsigrok.svg
+%exclude %{_datadir}/mime/packages/vnd.sigrok.session.xml
 
 %files devel
 %{_includedir}/libsigrok/
@@ -121,7 +121,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_libdir}/pkgconfig/libsigrok.pc
 
 %files cxx
-%{_libdir}/libsigrokcxx.so.*
+%{_libdir}/libsigrokcxx.so.4*
 
 %files cxx-devel
 %{_includedir}/libsigrokcxx/

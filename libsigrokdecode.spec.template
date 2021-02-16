@@ -43,7 +43,7 @@ using %{name}.
 
 
 %prep
-%setup -q
+%autosetup
 
 
 %build

@@ -41,6 +41,7 @@ Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+
 %package        doc
 Summary:        API documentation for %{name}
 BuildArch:      noarch
@@ -53,6 +54,7 @@ with %{name}.
 
 %prep
 %setup -q
+
 
 %build
 ./autogen.sh
