@@ -41,7 +41,6 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %package        doc
-Group:          Documentation
 Summary:        API documentation for %{name}
 BuildArch:      noarch
 Requires:       %{name} = %{epoch}:%{version}-%{release}
@@ -80,5 +79,8 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
+- Remove obsolete Group tag
+
 * Sun Mar 18 2018 Aimylios <aimylios@xxx.xx>
 - Initial release based on 0.1.1-5.fc29

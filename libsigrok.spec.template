@@ -56,7 +56,6 @@ The %{name}-cxx-devel package contains libraries and header files for
 developing applications that use %{name} C++ bindings.
 
 %package        doc
-Group:          Documentation
 Summary:        API documentation for %{name}
 BuildArch:      noarch
 
@@ -126,6 +125,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
+- Remove obsolete Group tag
+
 * Sat Jun 8 2019 Aimylios <aimylios@xxx.xx>
 - Add new dependencies
 

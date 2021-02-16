@@ -33,7 +33,6 @@ developing applications that use %{name}.
 
 
 %package        doc
-Group:          Documentation
 Summary:        API documentation for %{name}
 BuildArch:      noarch
 
@@ -82,6 +81,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
+- Remove obsolete Group tag
+
 * Sat Aug 1 2020 Aimylios <aimylios@xxx.xx>
 - Include IRMP library
 
