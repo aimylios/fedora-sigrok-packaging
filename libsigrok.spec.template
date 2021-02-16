@@ -90,12 +90,8 @@ install -D -p -m 0644 contrib/61-libsigrok-uaccess.rules %{buildroot}%{_udevrule
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
-%post -p /sbin/ldconfig
-%post cxx -p /sbin/ldconfig
-
-
-%postun -p /sbin/ldconfig
-%postun cxx -p /sbin/ldconfig
+%ldconfig_scriptlets
+%ldconfig_scriptlets cxx
 
 
 %files
@@ -131,6 +127,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 - Remove obsolete Group tag
 - Correctly package license and documentation
 - Add new dependencies
+- Remove obsolete ldconfig scriptlets
 
 * Sat Jun 8 2019 Aimylios <aimylios@xxx.xx>
 - Add new dependencies

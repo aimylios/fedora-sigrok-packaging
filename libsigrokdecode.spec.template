@@ -60,10 +60,7 @@ doxygen Doxyfile
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
-%post -p /sbin/ldconfig
-
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 
 %files
@@ -87,6 +84,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 - Remove obsolete Group tag
 - Correctly package license and documentation
 - Add new dependencies
+- Remove obsolete ldconfig scriptlets
 
 * Sat Aug 1 2020 Aimylios <aimylios@xxx.xx>
 - Include IRMP library
