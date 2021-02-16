@@ -21,6 +21,7 @@ BuildRequires:  hidapi-devel
 BuildRequires:  libftdi-devel
 BuildRequires:  libieee1284-devel
 BuildRequires:  libserialport-devel
+BuildRequires:  libtirpc-devel
 BuildRequires:  libtool
 BuildRequires:  libusb1-devel
 BuildRequires:  libzip-devel
@@ -72,8 +73,17 @@ with %{name}.
 %build
 ./autogen.sh
 # --disable-gpib: Fedora doesn't ship libgpib
-# --disable-python: TODO Figure out hot to properly package the python bindings
-%configure --disable-static --disable-python --disable-gpib
+# --disable-python: We don't package python bindings because they are a PITA
+#                   for maintainers and are pretty horrible and useless anyway
+# --disable-java: Be explicit rather than rely on missing java-devel
+# --disable-ruby: Be explicit rather than rely on missing ruby-devel
+%configure \
+    --disable-static \
+    --disable-gpib \
+    --disable-python \
+    --disable-java \
+    --disable-ruby \
+    CPPFLAGS=-I/usr/include/tirpc LDFLAGS=-ltirpc
 %make_build
 
 # Doxygen produces different output based on the build arch. This will make
@@ -128,6 +138,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 - Correctly package license and documentation
 - Add new dependencies
 - Remove obsolete ldconfig scriptlets
+- Build with libtirpc to enable VXI (RHBZ #1724865)
 
 * Sat Jun 8 2019 Aimylios <aimylios@xxx.xx>
 - Add new dependencies
