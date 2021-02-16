@@ -11,6 +11,7 @@ Source0:        %{name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  automake
+BuildRequires:  make
 BuildRequires:  sdcc
 
 Requires:       sigrok-firmware-filesystem
@@ -46,6 +47,7 @@ based logic analyzers (the fx2lafw driver in libsigrok).
 %changelog
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Correctly package license and documentation
+- Add new dependencies
 
 * Sun Aug 5 2018 Aimylios <aimylios@xxx.xx>
 - Initial release based on 0.1.5-4.fc29

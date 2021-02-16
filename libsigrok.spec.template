@@ -24,6 +24,7 @@ BuildRequires:  libserialport-devel
 BuildRequires:  libtool
 BuildRequires:  libusb1-devel
 BuildRequires:  libzip-devel
+BuildRequires:  make
 BuildRequires:  zlib-devel
 
 %description
@@ -129,6 +130,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Remove obsolete Group tag
 - Correctly package license and documentation
+- Add new dependencies
 
 * Sat Jun 8 2019 Aimylios <aimylios@xxx.xx>
 - Add new dependencies

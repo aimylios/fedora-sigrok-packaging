@@ -13,6 +13,7 @@ BuildRequires:  doxygen
 BuildRequires:  gcc
 BuildRequires:  graphviz
 BuildRequires:  libtool
+BuildRequires:  make
 
 Provides: bundled(jquery) = 1.7.1
 
@@ -83,6 +84,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Remove obsolete Group tag
 - Correctly package license and documentation
+- Add new dependencies
 
 * Sun Mar 18 2018 Aimylios <aimylios@xxx.xx>
 - Initial release based on 0.1.1-5.fc29

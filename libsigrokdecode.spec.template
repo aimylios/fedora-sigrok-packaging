@@ -15,6 +15,7 @@ BuildRequires:  gcc
 BuildRequires:  graphviz
 BuildRequires:  glib2-devel
 BuildRequires:  libtool
+BuildRequires:  make
 BuildRequires:  python3-devel
 
 %description
@@ -85,6 +86,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Remove obsolete Group tag
 - Correctly package license and documentation
+- Add new dependencies
 
 * Sat Aug 1 2020 Aimylios <aimylios@xxx.xx>
 - Include IRMP library
