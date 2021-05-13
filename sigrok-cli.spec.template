@@ -27,7 +27,7 @@ command-line. Among other things, it's useful for scripting purposes.
 
 %build
 ./autogen.sh
-%configure --disable-static
+%configure
 %make_build
 
 
@@ -46,6 +46,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Thu May 13 2021 Aimylios <aimylios@xxx.xx>
+- Drop "--disable-static" argument from %%configure in alignment with upstream
+
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Correctly package license and documentation
 - Add new dependencies
