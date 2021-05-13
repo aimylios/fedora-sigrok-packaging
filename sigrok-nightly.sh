@@ -53,7 +53,7 @@ build_package()
     sed s/REVISION_NUMBER/$VERSION/g $NAME.spec.template > ./rpmbuild/SPECS/$NAME.spec
     if [ ! -f ./rpmbuild/SRPMS/$NAME-$VERSION-nightly$FEDVER.src.rpm ]; then
         rm -rf ./rpmbuild/SRPMS/$NAME-r*.src.rpm
-        rpmbuild --define "_topdir rpmbuild" -bs "rpmbuild/SPECS/$NAME.spec"
+        rpmbuild --define "_topdir rpmbuild" --undefine "_disable_source_fetch" -bs "rpmbuild/SPECS/$NAME.spec"
         SRPM=$(find rpmbuild/SRPMS -name "$NAME-r*.src.rpm")
         copr-cli build aimylios/sigrok-weekly "${SRPM}"
     fi

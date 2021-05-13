@@ -9,6 +9,9 @@ URL:            http://www.sigrok.org
 
 Source0:        %{name}-%{version}.tar.gz
 
+# https://github.com/sigrokproject/pulseview/pull/39
+Patch0:         https://github.com/sigrokproject/pulseview/commit/fb89dd11f2a4a08b73c498869789e38677181a8d.patch
+
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
@@ -34,7 +37,7 @@ libraries under the hood.
 
 
 %prep
-%autosetup
+%autosetup -p 1
 
 
 %build
@@ -66,6 +69,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 
 
 %changelog
+* Thu May 13 2021 Aimylios <aimylios@xxx.xx>
+- Add patch to fix broken build due to C++ template behind C linkage
+
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Correctly package license and documentation
 
