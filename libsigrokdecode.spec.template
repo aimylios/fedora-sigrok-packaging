@@ -19,9 +19,8 @@ BuildRequires:  make
 BuildRequires:  python3-devel
 
 %description
-%{name} is a shared library written in C which provides the basic API
-for running sigrok protocol decoders. The protocol decoders themselves
-are written in Python.
+%{name} is a library which provides (streaming) protocol decoding
+functionality for sigrok.
 
 
 %package        devel
@@ -80,6 +79,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Thu Jan 13 2022 Aimylios <aimylios@xxx.xx>
+- Alignment with upstream SPEC 0.5.3-11
+
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Remove obsolete Group tag
 - Correctly package license and documentation

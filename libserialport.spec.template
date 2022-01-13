@@ -8,14 +8,13 @@ URL:            http://sigrok.org/wiki/%{name}
 
 Source0:        %{name}-%{version}.tar.gz
 
+BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  gcc
 BuildRequires:  graphviz
 BuildRequires:  libtool
 BuildRequires:  make
-
-Provides: bundled(jquery) = 1.7.1
 
 %description
 libserialport is a minimal library written in C that is intended to take care
@@ -46,6 +45,7 @@ developing applications that use %{name}.
 Summary:        API documentation for %{name}
 BuildArch:      noarch
 Requires:       %{name} = %{epoch}:%{version}-%{release}
+Provides:       bundled(jquery)
 
 %description    doc
 The %{name}-doc package contains documentation for developing software
@@ -53,7 +53,8 @@ with %{name}.
 
 
 %prep
-%setup -q
+%autosetup
+autoreconf -vif
 
 
 %build
@@ -65,7 +66,7 @@ with %{name}.
 
 %install
 %make_install
-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
+find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %files
@@ -83,6 +84,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Thu Jan 13 2022 Aimylios <aimylios@xxx.xx>
+- Alignment with upstream SPEC 0.1.1-11
+
 * Tue Feb 16 2021 Aimylios <aimylios@xxx.xx>
 - Remove obsolete Group tag
 - Correctly package license and documentation
