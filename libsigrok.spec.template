@@ -26,6 +26,7 @@ BuildRequires:  libtool
 BuildRequires:  libusb1-devel
 BuildRequires:  libzip-devel
 BuildRequires:  make
+BuildRequires:  nettle-devel
 BuildRequires:  zlib-devel
 
 %description
